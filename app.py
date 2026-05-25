@@ -1,0 +1,13 @@
+from flask import Flask, jsonify, request
+
+# Routes
+@app.route("post_recieve_test/data", methods=['POST'])
+def post_recieve_test():
+    if request.is_json:
+        data = request.get_json() # Get JSON file from ESP32
+        return 200 # Success Response
+    else:
+        return 400 # Error Response
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
