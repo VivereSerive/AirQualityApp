@@ -1,8 +1,14 @@
 from flask import Flask, jsonify, request
 
+app = Flask(__name__)
+
 # Routes
-@app.route("post_recieve_test/data", methods=['POST'])
-def post_recieve_test():
+@app.route('/')
+def dashboard():
+    
+
+@app.route("/get_json/data", methods=['POST'])
+def get_json():
     if request.is_json:
         data = request.get_json() # Get JSON file from ESP32
         return 200 # Success Response
