@@ -1,11 +1,11 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
 # Routes
 @app.route('/')
 def dashboard():
-    
+    return render_template("dashboard.html")
 
 @app.route("/get_json/data", methods=['POST'])
 def get_json():
