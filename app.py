@@ -10,7 +10,7 @@ AQM_API_KEY = "C7r57niMC6PFQXebcymAFLCdGGRRNGyM"
 def dashboard():
     return render_template("dashboard.html")
 
-@app.route("/get_json/data", methods=['POST'])
+@app.route("/get_json/data", methods=['GET','POST'])
 def get_json():
     client_key = request.headers.get("AQM-API-KEY") # Ensure that the API key is the same
 
@@ -22,8 +22,10 @@ def get_json():
     # Check if package is a json file
     if request.is_json:
         data = request.get_json() # Get JSON file from ESP32
+        print("Data is a JSON package")
         return jsonify({"status": "success", "message": "data received"}), 200 # Success Response
     else:
+        print("data is not a JSON package")
         return jsonify({"status": "error", "message": "Not JSON Package"}), 400 # Error Response
 
 if __name__ == '__main__':
