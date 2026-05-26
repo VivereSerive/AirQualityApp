@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
+# Must be Identical on the Air Quality Monitor
+AQM_API_KEY = "C7r57niMC6PFQXebcymAFLCdGGRRNGyM"
+
 # Routes
 @app.route('/')
 def dashboard():
@@ -11,9 +14,9 @@ def dashboard():
 def get_json():
     if request.is_json:
         data = request.get_json() # Get JSON file from ESP32
-        return 200 # Success Response
+        return "Success", 200 # Success Response
     else:
-        return 400 # Error Response
+        return "Error", 400 # Error Response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
