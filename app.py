@@ -7,4 +7,4 @@ app = Flask(__name__) # Init Server
 def index():
     return "WHAT"
 
-app.run(host="0.0.0.0", port=50100, debug=True, ssl_context="adhoc")
+app.run(host="0.0.0.0", port=50100, debug=True, ssl_context=("cert.pem","key.pem"))
